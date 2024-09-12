@@ -44,7 +44,6 @@ jobs:
         continue-on-error: true
 
       - name: Send Email Alert
-        if: steps.execute.outcome == 'failure'
         uses: dawidd6/action-send-mail@v3
         with:
           server: ${{ secrets.SMTP_SERVER }}
