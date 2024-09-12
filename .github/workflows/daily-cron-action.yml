@@ -42,6 +42,5 @@ jobs:
           npm install --global yarn && yarn install
       - name: Execute
         run: |
-          node index.js
-        continue-on-error: true
+          node .
 
