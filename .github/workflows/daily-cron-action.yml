@@ -18,7 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FNG_MIN: ${{ secrets.FNG_MIN }}
-      FNG_MAX: ${{ secrets.FNG_MAX }}
+      FNG_MAX: ${{ secrets.FNG_MAX }
+      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,4 +40,18 @@ jobs:
           npm install --global yarn && yarn install
       - name: Execute
         run: |
-          node .
+          node index.js
+        continue-on-error: true
+
+      - name: Send Email Alert
+        if: steps.execute.outcome == 'failure'
+        uses: mohit-kumar/send-mail-action@v1
+        with:
+          server: ${{ secrets.SMTP_SERVER }}
+          port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          to: ${{ secrets.EMAIL_TO }}
+          from: ${{ secrets.EMAIL_FROM }}
+          subject: "Alert: FNG Value Out of Range"
+          body: "The FNG value is out of the acceptable range. Please check your stock account."
