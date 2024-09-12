@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true
 
       - name: Send Email Alert
-        uses: dawidd6/action-send-mail@v3
+        uses: AlexisMateo/sendmail-action@5
         with:
           server: ${{ secrets.SMTP_SERVER }}
           port: ${{ secrets.SMTP_PORT }}
