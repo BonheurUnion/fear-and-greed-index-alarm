@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FNG_MIN: ${{ secrets.FNG_MIN }}
-      FNG_MAX: ${{ secrets.FNG_MAX }
+      FNG_MAX: ${{ secrets.FNG_MAX }}
       SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
       SMTP_PORT: ${{ secrets.SMTP_PORT }}
       SMTP_USER: ${{ secrets.SMTP_USER }}
@@ -45,7 +45,7 @@ jobs:
 
       - name: Send Email Alert
         if: steps.execute.outcome == 'failure'
-        uses: mohit-kumar/send-mail-action@v1
+        uses: s0/git-send-email-action@v1
         with:
           server: ${{ secrets.SMTP_SERVER }}
           port: ${{ secrets.SMTP_PORT }}
