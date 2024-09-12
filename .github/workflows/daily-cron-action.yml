@@ -42,19 +42,4 @@ jobs:
         run: |
           node index.js
         continue-on-error: true
-      
-      - name: Log Results
-        run: |
-          echo "Result of previous step: ${{ steps.execute.outcome }}"
-        
-      - name: Send Email Alert
-        uses: AlexisMateo/sendmail-action@5
-        with:
-          smtp-server: ${{ secrets.SMTP_SERVER }}
-          smtp-server-port: ${{ secrets.SMTP_PORT }}
-          auth-user: ${{ secrets.SMTP_USER }}
-          auth-password: ${{ secrets.SMTP_PASSWORD }}
-          to: ${{ secrets.EMAIL_TO }}
-          from: ${{ secrets.EMAIL_FROM }}
-          subject: "Alert: FNG Value Out of Range"
-          body: "The FNG value is out of the acceptable range. Please check your stock account."
+
