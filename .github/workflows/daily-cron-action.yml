@@ -21,12 +21,6 @@ jobs:
     env:
       FNG_MIN: ${{ secrets.FNG_MIN }}
       FNG_MAX: ${{ secrets.FNG_MAX }}
-      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
-      SMTP_USER: ${{ secrets.SMTP_USER }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      EMAIL_TO: ${{ secrets.EMAIL_TO }}
-      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
