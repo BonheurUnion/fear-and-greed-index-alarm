@@ -19,8 +19,8 @@ const BgGreen = "\x1b[42m";
     }
     const result = await crawl(Buffer.from(targetUrl, 'base64').toString('utf-8'));
     console.log("FNG for toady is: ", result);
-    if (result <= FNG_MIN || result >= FNG_MAX) {
-        console.log(`${BgRed}%s${Reset}`, "FNG: $result, is out of range, pls check your stock account.");
+    if (result <= FNG_MIN || result >= FNG_MAX){
+        console.log(`${BgRed}%s${Reset}`, "FNG is out of range, pls check your stock account.");
         process.exit(1);
     }
     process.exit(0);
