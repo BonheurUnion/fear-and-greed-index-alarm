@@ -45,7 +45,7 @@ jobs:
 
       - name: Send Email Alert
         if: steps.execute.outcome == 'failure'
-        uses: s0/git-send-email-action@v1
+        uses: michaeljoseph/send-email-action@v1
         with:
           server: ${{ secrets.SMTP_SERVER }}
           port: ${{ secrets.SMTP_PORT }}
